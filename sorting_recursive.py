@@ -40,7 +40,12 @@ def merge_sort(items):
     # TODO: Split items list into approximately equal halves
     # TODO: Sort each half by recursively calling merge sort
     # TODO: Merge sorted halves into one list in sorted order
+    if len(items) < 1:
+        return items
+    center = int(len(items) / 2)
 
+    left, right = merge_sort(items[:center]), merge_sort(items[center:])
+    return merge(left, right)
 
 def partition(items, low, high):
     """Return index `p` after in-place partitioning given items in range
@@ -54,6 +59,14 @@ def partition(items, low, high):
     # TODO: Move items less than pivot into front of range [low...p-1]
     # TODO: Move items greater than pivot into back of range [p+1...high]
     # TODO: Move pivot item into final position [p] and return index p
+    i = low -1
+    pivot = items[high]
+    for j in range(low, high):
+        if items[j] < pivot:
+            i += 1
+            items[i], items[j] = items[j],items[i]
+    items[i+1], items[high] = items[high], items[i+1]
+    return (i+1)
 
 
 def quick_sort(items, low=None, high=None):
