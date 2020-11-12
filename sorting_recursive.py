@@ -1,3 +1,7 @@
+from heapq import merge
+from sorting_iterative import insertion_sort
+import math
+
 def merge(items1, items2):
     """Merge given lists of items, each assumed to already be in sorted order,
     and return a new list containing all items in sorted order.
@@ -14,10 +18,18 @@ def split_sort_merge(items):
     a list in sorted order.
     TODO: Running time: ??? Why and under what conditions?
     TODO: Memory usage: ??? Why and under what conditions?"""
+    items_length = len(items)
+    midpoint = math.floor(items_length)/2
     # TODO: Split items list into approximately equal halves
-    # TODO: Sort each half using any other sorting algorithm
-    # TODO: Merge sorted halves into one list in sorted order
-
+    lower = []
+    higher = []
+    for  i in range(midpoint):
+        lower.append(items[i])
+        result1 = insertion_sort(lower)
+    for j in range(midpoint+1, items_length-1):
+        higher.append(items[j])
+        result2 = insertion_sort(higher)
+    return merge(result1,result2)
 
 def merge_sort(items):
     """Sort given items by splitting list into two approximately equal halves,
