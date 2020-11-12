@@ -42,7 +42,7 @@ def selection_sort(items):
 
 def insertion_sort(items):
     """Sort by taking first item, inserting it to front of list,iterate until all items are in order.
-    TODO: Time Complexity: Best: O(n) Average:O(n^2) Worst O(n^2)
+    TODO: Time Complexity: Best: O(n^2) Average:O(n^2) Worst O(n^2)
     TODO: Space Complexity: O(1)"""
     item_length = range(1, len(items))
     for i in item_length:
