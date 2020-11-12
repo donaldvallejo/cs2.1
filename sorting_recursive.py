@@ -79,3 +79,7 @@ def quick_sort(items, low=None, high=None):
     # TODO: Check if list or range is so small it's already sorted (base case)
     # TODO: Partition items in-place around a pivot and get index of pivot
     # TODO: Sort each sublist range by recursively calling quick sort
+    if low < high:
+        pivot = partition(items, low, high)
+        quick_sort(items, low, pivot-1)
+        quick_sort(items, pivot+1, high)
